@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,12 +29,14 @@ SOURCES += \
         admininterface.cpp \
         main.cpp \
         login.cpp \
+        node.cpp \
         studentinterface.cpp \
         teacherinterface.cpp
 
 HEADERS += \
         admininterface.h \
         login.h \
+        node.h \
         studentinterface.h \
         teacherinterface.h
 

@@ -2,7 +2,9 @@
 #define LOGIN_H
 
 #include <QWidget>
-
+#include <QtSql>
+#include <QDebug>
+#include <QIntValidator>
 namespace Ui {
 class Login;
 }
@@ -18,8 +20,12 @@ public:
 public slots:
 //  Recieve loginPushButton signal and exec.
     void loginSystemSlot();
+    void setLoginPushButtonStatus();
 private:
     Ui::Login *ui;
+    QSqlDatabase db;
+    void setUserLineEdit();
+    bool checkIdAndPasswd(const QString& ID,const QString& passwd);
 };
 
 #endif // LOGIN_H
