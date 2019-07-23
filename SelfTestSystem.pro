@@ -27,18 +27,26 @@ CONFIG += c++11
 
 SOURCES += \
         admininterface.cpp \
+        basiclist.cpp \
+        examinfo.cpp \
         main.cpp \
         login.cpp \
         node.cpp \
+        studentfinishedexam.cpp \
         studentinterface.cpp \
-        teacherinterface.cpp
+        teacherinterface.cpp \
+        userinfo.cpp
 
 HEADERS += \
         admininterface.h \
+        basiclist.h \
+        examinfo.h \
         login.h \
         node.h \
+        studentfinishedexam.h \
         studentinterface.h \
-        teacherinterface.h
+        teacherinterface.h \
+        userinfo.h
 
 FORMS += \
         admininterface.ui \
