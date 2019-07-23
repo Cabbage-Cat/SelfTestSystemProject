@@ -10,7 +10,6 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Self Test System.");
-
     Login::setUserLineEdit();
     ui->loginPushButton->setEnabled(false);
 
@@ -21,27 +20,57 @@ Login::Login(QWidget *parent) :
     // Set when closeButton clicked.
     QObject::connect(ui->closePushButton,SIGNAL(clicked()),this,SLOT(close()));
 
-    Login::db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("/home/ssorryqaq/Github/SelfTestSystemProject/SelfTestSystem/systemdata.db");
+	// Load database to allUser.
+	this->allUser = new UserInfo();
+	allUser->init();
+	
 }
 
 Login::~Login()
 {
-    db.close();
     delete ui;
 }
 
 void Login::loginSystemSlot(){
-    QString username = ui->nameLineEdit->text();
-    QString password = ui->passwordEdit->text();
+    QString userId = ui->nameLineEdit->text().trimmed();
+	QString password = ui->passwordEdit->text().trimmed();
+	// Encrypt password.
+	QByteArray pe; pe.append(password);
+	password = pe.toBase64();
+	// Get UserInfo LinkedList headnode.
+	UserInfoNode* node = (UserInfoNode*)this->allUser->getNode(-1);
+	// Get UserInfo LinkedList first data node.
+	node = (UserInfoNode*)node->getNext();
 
-    // Search database.
-//    bool l = db.open();
-//    QSqlQuery q;
-//    q.exec("SELECT *FROM PERSONINFO;");
-//    q.next();
-//    qDebug() << q.value(0).toInt();
-    // Test Version.
+	// Find in LinkedList.
+	while (node != nullptr)
+	{
+		// qDebug() << node->getId();
+		if (node->getId() == userId.toInt() && node->getPassword() == password)
+		{
+			if (userId == 1000)
+			{
+				AdminInterface* w = new AdminInterface();
+				w->setWindowTitle("ADMIN,WELCOME!");
+				w->show();
+			}
+			else if (node->getType() == 1)
+			{
+				TeacherInterface* w = new TeacherInterface();
+				w->setWindowTitle("Teacher:" + node->getName());
+				w->show();
+			}
+			else
+			{
+				StudentInterface* w = new StudentInterface();
+				w->setWindowTitle("Student:" + node->getName());
+				w->show();
+			}
+			return;
+		}
+		node = (UserInfoNode*)node->getNext();
+	}
+	QMessageBox::warning(this, "Error", "Username or password error.");
 
 }
 

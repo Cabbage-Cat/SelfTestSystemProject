@@ -5,6 +5,7 @@
 #include <QtSql>
 #include <QDebug>
 #include <QIntValidator>
+#include "userinfo.h"
 namespace Ui {
 class Login;
 }
@@ -23,7 +24,7 @@ public slots:
     void setLoginPushButtonStatus();
 private:
     Ui::Login *ui;
-    QSqlDatabase db;
+	UserInfo* allUser = nullptr;
     void setUserLineEdit();
     bool checkIdAndPasswd(const QString& ID,const QString& passwd);
 };

@@ -1,13 +1,13 @@
 #include "basiclist.h"
 
-QSqlDatabase BasicList::db = QSqlDatabase::addDatabase("QSQLITE");
+//QSqlDatabase BasicList::db = QSqlDatabase::addDatabase("QSQLITE");
 
 BasicList::BasicList()
-{
+{	
+	db = QSqlDatabase::addDatabase("QSQLITE");
 	this->list = new Node();
 	this->list->setNext(nullptr);
-
-	this->db.setDatabaseName("systemdata");
+	this->db.setDatabaseName("systemdata.db");
 }
 
 BasicList::~BasicList()

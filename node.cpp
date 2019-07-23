@@ -9,7 +9,7 @@ bool Node::compare(int id)
 
 int Node::getId()
 {
-	return 0;
+	return this->id;
 }
 
 void Node::setId(int id)

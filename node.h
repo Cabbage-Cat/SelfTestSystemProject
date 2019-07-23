@@ -59,6 +59,7 @@ public:
 protected:
     int examId;
     int score;
+	// Base Id is userID , examId is exam's Id , override method compare to find examid == 'eId' node.
 };
 
 
