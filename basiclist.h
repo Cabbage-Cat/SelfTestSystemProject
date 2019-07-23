@@ -3,8 +3,6 @@
 #include <QtSql>
 #include "node.h"
 
-QSqlDatabase BasicList::db = QSqlDatabase::addDatabase("QSQLITE");
-
 class BasicList
 {
 public:

@@ -6,6 +6,11 @@ class ExamInfo : public BasicList
 {
 public:
     ExamInfo();
+	virtual ~ExamInfo();
+
+	virtual void init();
+	virtual void saveAdd();
+	virtual void saveDelete();
 };
 
 #endif // EXAMINFO_H

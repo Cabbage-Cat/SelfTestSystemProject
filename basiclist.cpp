@@ -1,5 +1,7 @@
 #include "basiclist.h"
 
+QSqlDatabase BasicList::db = QSqlDatabase::addDatabase("QSQLITE");
+
 BasicList::BasicList()
 {
 	this->list = new Node();
