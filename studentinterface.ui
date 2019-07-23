@@ -1,21 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>StudentInterface</class>
- <widget name="StudentInterface" class="QWidget">
+ <widget class="QWidget" name="StudentInterface">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>605</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QTreeWidget" name="treeWidget">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>10</y>
+     <width>256</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>班级</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>试卷编号</string>
+    </property>
+   </column>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>272</y>
+     <width>531</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <widget class="QPushButton" name="showPastExamPushButton">
+    <property name="text">
+     <string>查看以往成绩</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="changeInfoPushButton">
+    <property name="text">
+     <string>修改个人信息</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>31</x>
+     <y>12</y>
+     <width>211</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="answerSelectExamPushButton">
+      <property name="text">
+       <string>测试当前试卷</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="selfTestPushButton">
+      <property name="text">
+       <string>自行测试</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="beginChallegePushButton">
+      <property name="text">
+       <string>闯关模式</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <pixmapfunction/>
+ <resources/>
  <connections/>
 </ui>

@@ -62,8 +62,8 @@ void Login::loginSystemSlot(){
 			}
 			else
 			{
-				StudentInterface* w = new StudentInterface();
-				w->setWindowTitle("Student:" + node->getName());
+				StudentInterface* w = new StudentInterface(node);
+				//w->setWindowTitle("Student:" + node->getName());
 				w->show();
 			}
 			return;
@@ -84,18 +84,6 @@ void Login::setUserLineEdit(){
     ui->passwordEdit->setValidator(new QRegExpValidator(rx,this));
 }
 
-bool Login::checkIdAndPasswd(const QString& ID,const QString& passwd){
-    if (ID == "1000"){
-        AdminInterface *w = new AdminInterface();
-        w->show();
-    }
-    else {
-        StudentInterface *w = new StudentInterface();
-        w->window()->setWindowTitle("Student");
-        w->show();
-    }
-    return true;
-}
 
 void Login::setLoginPushButtonStatus(){
     QString username = ui->nameLineEdit->text();

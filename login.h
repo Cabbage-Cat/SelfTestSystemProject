@@ -26,7 +26,6 @@ private:
     Ui::Login *ui;
 	UserInfo* allUser = nullptr;
     void setUserLineEdit();
-    bool checkIdAndPasswd(const QString& ID,const QString& passwd);
 };
 
 #endif // LOGIN_H
