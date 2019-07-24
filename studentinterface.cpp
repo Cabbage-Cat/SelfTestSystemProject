@@ -1,6 +1,7 @@
 #include "studentinterface.h"
 #include "ui_studentinterface.h"
 #include "pastexaminfowindow.h"
+#include "changeuserinfowindow.h"
 StudentInterface::StudentInterface(UserInfoNode* node,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::StudentInterface)
@@ -105,4 +106,6 @@ void StudentInterface::testSelf()
 
 void StudentInterface::showPersonInfoChange()
 {
+    ChangeUserInfoWindow* w = new ChangeUserInfoWindow(this->thisUser);
+    w->show();
 }

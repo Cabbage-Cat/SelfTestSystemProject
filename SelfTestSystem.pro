@@ -30,6 +30,7 @@ SOURCES += \
         admininterface.cpp \
         basiclist.cpp \
         changeuserinfowindow.cpp \
+        changeuserpasswd.cpp \
         examinfo.cpp \
         main.cpp \
         login.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
         admininterface.h \
         basiclist.h \
         changeuserinfowindow.h \
+        changeuserpasswd.h \
         examinfo.h \
         login.h \
         node.h \
