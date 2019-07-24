@@ -27,6 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        adduserwindow.cpp \
         admininterface.cpp \
         basiclist.cpp \
         changeuserinfowindow.cpp \
@@ -36,12 +37,15 @@ SOURCES += \
         login.cpp \
         node.cpp \
         pastexaminfowindow.cpp \
+        selfmakeexamwindow.cpp \
         studentfinishedexam.cpp \
         studentinterface.cpp \
+        studentscoreanalyzewindow.cpp \
         teacherinterface.cpp \
         userinfo.cpp
 
 HEADERS += \
+        adduserwindow.h \
         admininterface.h \
         basiclist.h \
         changeuserinfowindow.h \
@@ -50,18 +54,22 @@ HEADERS += \
         login.h \
         node.h \
         pastexaminfowindow.h \
+        selfmakeexamwindow.h \
         studentfinishedexam.h \
         studentinterface.h \
+        studentscoreanalyzewindow.h \
         teacherinterface.h \
         userinfo.h
 
 FORMS += \
+        adduserwindow.ui \
         admininterface.ui \
         changeuserinfowindow.ui \
         login.ui \
         pastexaminfowindow.ui \
-        pasttestinfo.ui \
+        selfmakeexamwindow.ui \
         studentinterface.ui \
+        studentscoreanalyzewindow.ui \
         teacherinterface.ui
 
 # Default rules for deployment.
