@@ -34,4 +34,6 @@ void ChangeUserInfoWindow::changePassword()
         return;
     }
     ChangeUserpasswd::changePasswd(this->userNode,ui->confirmPasswordLineEdit->text());
+    QMessageBox::information(this,"SUCCESS","CHANGE PASSWORD DONE.");
+    this->window()->close();
 }
