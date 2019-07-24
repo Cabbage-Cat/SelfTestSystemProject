@@ -1,6 +1,8 @@
 #include "login.h"
 #include <QApplication>
+#include <QtPlugin>
 
+//Q_IMPORT_PLUGIN(qsqlite)
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

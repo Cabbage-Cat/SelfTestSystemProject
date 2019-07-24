@@ -19,7 +19,7 @@ void UserInfo::init()
 	qDebug() << "Database open success.";
 	QSqlQuery query;
 	query.exec("SELECT * FROM `USERS`;");
-	this->length = query.size();
+	// this->length = query.size();
 
 	// ID passwd name type classnumber
 	while (query.next())
@@ -34,6 +34,7 @@ void UserInfo::init()
 	}
 
 	this->db.close();
+	qDebug() << "Database close success.";
 }
 
 void UserInfo::saveAdd()

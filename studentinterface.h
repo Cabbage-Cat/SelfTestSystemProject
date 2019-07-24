@@ -19,7 +19,7 @@ public:
     ~StudentInterface();
 public slots:
 	void showUnfinishedExams();
-	void answerTestPaper(QTreeWidgetItem* item, int col);
+	void answerTestPaper();
 	void showPastExams();
 	void testSelf();
 	void showPersonInfoChange();

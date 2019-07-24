@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += sql
+QTPLUGIN += qsqlite
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,10 +29,12 @@ CONFIG += c++11
 SOURCES += \
         admininterface.cpp \
         basiclist.cpp \
+        changeuserinfowindow.cpp \
         examinfo.cpp \
         main.cpp \
         login.cpp \
         node.cpp \
+        pastexaminfowindow.cpp \
         studentfinishedexam.cpp \
         studentinterface.cpp \
         teacherinterface.cpp \
@@ -40,9 +43,11 @@ SOURCES += \
 HEADERS += \
         admininterface.h \
         basiclist.h \
+        changeuserinfowindow.h \
         examinfo.h \
         login.h \
         node.h \
+        pastexaminfowindow.h \
         studentfinishedexam.h \
         studentinterface.h \
         teacherinterface.h \
@@ -50,7 +55,10 @@ HEADERS += \
 
 FORMS += \
         admininterface.ui \
+        changeuserinfowindow.ui \
         login.ui \
+        pastexaminfowindow.ui \
+        pasttestinfo.ui \
         studentinterface.ui \
         teacherinterface.ui
 

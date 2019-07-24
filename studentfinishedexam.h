@@ -7,7 +7,7 @@ class StudentFinishedExam : public BasicList
 public:
     StudentFinishedExam(int stuId);
 	virtual ~StudentFinishedExam();
-
+	bool haveExamId(int exId);
 	virtual void init();
 	virtual void saveAdd();
 	virtual void saveDelete();

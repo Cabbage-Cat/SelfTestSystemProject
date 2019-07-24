@@ -20,7 +20,7 @@ void ExamInfo::init()
 
 	QSqlQuery query;
 	query.exec("SELECT * FROM `EXAMSDATA`;");
-	this->length = query.size();
+	// this->length = query.size();
 
 	while (query.next())
 	{
@@ -30,9 +30,11 @@ void ExamInfo::init()
 		node->setClassNumber(query.value(1).toInt());
 		node->setFileLocation(query.value(2).toString());
 		this->addNode(node);
+		//qDebug() << node->getId() << node->getClassNumber() << node->getFileLocation() << endl;
 	}
 
 	this->db.close();
+	qDebug() << "Database close success" << endl;
 
 }
 

@@ -9,9 +9,21 @@ StudentFinishedExam::~StudentFinishedExam()
 {
 }
 
+bool StudentFinishedExam::haveExamId(int exId)
+{
+	StudentFinishedExamNode* node = (StudentFinishedExamNode*)this->list->getNext();
+	while (node != nullptr)
+	{
+		if (node->getExamId() == exId)
+			return true;
+		node = (StudentFinishedExamNode*)node->getNext();
+	}
+	return false;
+}
+
 void StudentFinishedExam::init()
 {
-	if (this->db.open())
+	if (!this->db.open())
 	{
 		qDebug() << "Database open error";
 		return;
@@ -36,6 +48,7 @@ void StudentFinishedExam::init()
 	}
 
 	this->db.close();
+	qDebug() << "Database close success" << endl;
 }
 
 void StudentFinishedExam::saveAdd()
