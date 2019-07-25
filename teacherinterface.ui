@@ -6,33 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>367</width>
-    <height>492</height>
+    <width>345</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="teacherInfoLabel">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>51</x>
-     <y>41</y>
+     <x>41</x>
+     <y>57</y>
      <width>261</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>教师：xxxx  班级号:xxxx</string>
-   </property>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>51</x>
-     <y>67</y>
-     <width>261</width>
-     <height>401</height>
+     <height>201</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -51,6 +38,32 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="teacherInfoLabel">
+   <property name="geometry">
+    <rect>
+     <x>41</x>
+     <y>31</y>
+     <width>261</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>教师：xxxx  班级号:xxxx</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="changeInfoPushButton">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>300</y>
+     <width>259</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>更改信息</string>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -34,6 +34,8 @@ Login::~Login()
 void Login::loginSystemSlot(){
     QString userId = ui->nameLineEdit->text().trimmed();
 	QString password = ui->passwordEdit->text().trimmed();
+    userId = "1000";
+    password = "123456";
 	// Encrypt password.
 	QByteArray pe; pe.append(password);
 	password = pe.toBase64();
@@ -48,7 +50,7 @@ void Login::loginSystemSlot(){
 		// qDebug() << node->getId();
 		if (node->getId() == userId.toInt() && node->getPassword() == password)
 		{
-			if (userId == 1000)
+			if (userId == "1000")
 			{
 				AdminInterface* w = new AdminInterface();
 				w->setWindowTitle("ADMIN,WELCOME!");
@@ -56,7 +58,7 @@ void Login::loginSystemSlot(){
 			}
 			else if (node->getType() == 1)
 			{
-				TeacherInterface* w = new TeacherInterface();
+                TeacherInterface* w = new TeacherInterface(node);
 				w->setWindowTitle("Teacher:" + node->getName());
 				w->show();
 			}

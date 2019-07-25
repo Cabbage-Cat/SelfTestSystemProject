@@ -27,11 +27,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        adduserdialog.cpp \
         adduserwindow.cpp \
         admininterface.cpp \
         basiclist.cpp \
+        changeuserinfodialog.cpp \
         changeuserinfowindow.cpp \
         changeuserpasswd.cpp \
+        doteacherexamdialog.cpp \
         examinfo.cpp \
         main.cpp \
         login.cpp \
@@ -45,11 +48,14 @@ SOURCES += \
         userinfo.cpp
 
 HEADERS += \
+        adduserdialog.h \
         adduserwindow.h \
         admininterface.h \
         basiclist.h \
+        changeuserinfodialog.h \
         changeuserinfowindow.h \
         changeuserpasswd.h \
+        doteacherexamdialog.h \
         examinfo.h \
         login.h \
         node.h \
@@ -62,9 +68,12 @@ HEADERS += \
         userinfo.h
 
 FORMS += \
+        adduserdialog.ui \
         adduserwindow.ui \
         admininterface.ui \
+        changeuserinfodialog.ui \
         changeuserinfowindow.ui \
+        doteacherexamdialog.ui \
         login.ui \
         pastexaminfowindow.ui \
         selfmakeexamwindow.ui \
