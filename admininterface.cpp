@@ -42,14 +42,15 @@ void AdminInterface::changeSelectUserInfo()
 
 void AdminInterface::addUser()
 {
-	this->readAllUser();
-	AddUserDialog* d = new AddUserDialog(this->allUser);
-	d->exec();
+    this->readAllUser();
+    AddUserDialog* d = new AddUserDialog(this->allUser);
+    d->exec();
     this->readAllUser();
 }
 
 void AdminInterface::readAllUser()
 {
+	ui->treeWidget->clear();
     this->allUser->clear();
     delete this->allUser;
     this->allUser = new UserInfo();

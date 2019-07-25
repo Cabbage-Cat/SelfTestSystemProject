@@ -28,7 +28,6 @@ CONFIG += c++11
 
 SOURCES += \
         adduserdialog.cpp \
-        adduserwindow.cpp \
         admininterface.cpp \
         basiclist.cpp \
         changeuserinfodialog.cpp \
@@ -49,7 +48,6 @@ SOURCES += \
 
 HEADERS += \
         adduserdialog.h \
-        adduserwindow.h \
         admininterface.h \
         basiclist.h \
         changeuserinfodialog.h \
@@ -69,7 +67,6 @@ HEADERS += \
 
 FORMS += \
         adduserdialog.ui \
-        adduserwindow.ui \
         admininterface.ui \
         changeuserinfodialog.ui \
         changeuserinfowindow.ui \

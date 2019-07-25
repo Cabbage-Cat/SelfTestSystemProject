@@ -23,60 +23,72 @@ QT_BEGIN_NAMESPACE
 class Ui_AddUserDialog
 {
 public:
+    QLabel *label_6;
     QPushButton *confirmPushButton;
-    QLabel *label_4;
-    QSplitter *splitter;
+    QSplitter *splitter_2;
+    QLabel *label_5;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QLineEdit *classNumberLineEdit;
-    QSplitter *splitter_2;
+    QLabel *label_4;
+    QSplitter *splitter;
     QComboBox *comboBox;
     QLineEdit *idLineEdit;
     QLineEdit *passwordLineEdit;
+    QLineEdit *nameLineEdit;
+    QLineEdit *classNumberLineEdit;
 
     void setupUi(QDialog *AddUserDialog)
     {
         if (AddUserDialog->objectName().isEmpty())
             AddUserDialog->setObjectName(QString::fromUtf8("AddUserDialog"));
-        AddUserDialog->resize(400, 471);
+        AddUserDialog->resize(430, 550);
+        label_6 = new QLabel(AddUserDialog);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setGeometry(QRect(170, 30, 72, 15));
         confirmPushButton = new QPushButton(AddUserDialog);
         confirmPushButton->setObjectName(QString::fromUtf8("confirmPushButton"));
-        confirmPushButton->setGeometry(QRect(50, 360, 291, 81));
-        label_4 = new QLabel(AddUserDialog);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(60, 260, 75, 83));
-        splitter = new QSplitter(AddUserDialog);
-        splitter->setObjectName(QString::fromUtf8("splitter"));
-        splitter->setGeometry(QRect(60, 10, 75, 261));
-        splitter->setOrientation(Qt::Vertical);
-        label = new QLabel(splitter);
-        label->setObjectName(QString::fromUtf8("label"));
-        splitter->addWidget(label);
-        label_2 = new QLabel(splitter);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        splitter->addWidget(label_2);
-        label_3 = new QLabel(splitter);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        splitter->addWidget(label_3);
-        classNumberLineEdit = new QLineEdit(AddUserDialog);
-        classNumberLineEdit->setObjectName(QString::fromUtf8("classNumberLineEdit"));
-        classNumberLineEdit->setGeometry(QRect(180, 270, 171, 80));
+        confirmPushButton->setGeometry(QRect(70, 430, 281, 61));
         splitter_2 = new QSplitter(AddUserDialog);
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
-        splitter_2->setGeometry(QRect(180, 10, 171, 251));
+        splitter_2->setGeometry(QRect(70, 90, 75, 311));
         splitter_2->setOrientation(Qt::Vertical);
-        comboBox = new QComboBox(splitter_2);
+        label_5 = new QLabel(splitter_2);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        splitter_2->addWidget(label_5);
+        label = new QLabel(splitter_2);
+        label->setObjectName(QString::fromUtf8("label"));
+        splitter_2->addWidget(label);
+        label_2 = new QLabel(splitter_2);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        splitter_2->addWidget(label_2);
+        label_3 = new QLabel(splitter_2);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        splitter_2->addWidget(label_3);
+        label_4 = new QLabel(splitter_2);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        splitter_2->addWidget(label_4);
+        splitter = new QSplitter(AddUserDialog);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setGeometry(QRect(190, 90, 171, 301));
+        splitter->setOrientation(Qt::Vertical);
+        comboBox = new QComboBox(splitter);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        splitter_2->addWidget(comboBox);
-        idLineEdit = new QLineEdit(splitter_2);
+        splitter->addWidget(comboBox);
+        idLineEdit = new QLineEdit(splitter);
         idLineEdit->setObjectName(QString::fromUtf8("idLineEdit"));
-        splitter_2->addWidget(idLineEdit);
-        passwordLineEdit = new QLineEdit(splitter_2);
+        splitter->addWidget(idLineEdit);
+        passwordLineEdit = new QLineEdit(splitter);
         passwordLineEdit->setObjectName(QString::fromUtf8("passwordLineEdit"));
-        splitter_2->addWidget(passwordLineEdit);
+        splitter->addWidget(passwordLineEdit);
+        nameLineEdit = new QLineEdit(splitter);
+        nameLineEdit->setObjectName(QString::fromUtf8("nameLineEdit"));
+        splitter->addWidget(nameLineEdit);
+        classNumberLineEdit = new QLineEdit(splitter);
+        classNumberLineEdit->setObjectName(QString::fromUtf8("classNumberLineEdit"));
+        splitter->addWidget(classNumberLineEdit);
 
         retranslateUi(AddUserDialog);
 
@@ -86,11 +98,13 @@ public:
     void retranslateUi(QDialog *AddUserDialog)
     {
         AddUserDialog->setWindowTitle(QCoreApplication::translate("AddUserDialog", "Dialog", nullptr));
-        confirmPushButton->setText(QCoreApplication::translate("AddUserDialog", "\347\241\256\345\256\232", nullptr));
-        label_4->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\347\217\255\347\272\247\357\274\232", nullptr));
-        label->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\347\261\273\345\236\213\357\274\232", nullptr));
-        label_2->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267ID\357\274\232", nullptr));
-        label_3->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\345\257\206\347\240\201\357\274\232", nullptr));
+        label_6->setText(QCoreApplication::translate("AddUserDialog", "\345\210\233\345\273\272\347\224\250\346\210\267", nullptr));
+        confirmPushButton->setText(QCoreApplication::translate("AddUserDialog", "\347\241\256\345\256\232\345\210\233\345\273\272", nullptr));
+        label_5->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\347\261\273\345\236\213:", nullptr));
+        label->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267ID:", nullptr));
+        label_2->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\345\257\206\347\240\201:", nullptr));
+        label_3->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\345\247\223\345\220\215\357\274\232", nullptr));
+        label_4->setText(QCoreApplication::translate("AddUserDialog", "\347\224\250\346\210\267\347\217\255\347\272\247:", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("AddUserDialog", "\350\200\201\345\270\210", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("AddUserDialog", "\345\255\246\347\224\237", nullptr));
 

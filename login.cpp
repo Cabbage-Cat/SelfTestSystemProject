@@ -34,8 +34,8 @@ Login::~Login()
 void Login::loginSystemSlot(){
     QString userId = ui->nameLineEdit->text().trimmed();
 	QString password = ui->passwordEdit->text().trimmed();
-    userId = "1000";
-    password = "123456";
+    //userId = "1000";
+    //password = "root";
 	// Encrypt password.
 	QByteArray pe; pe.append(password);
 	password = pe.toBase64();
