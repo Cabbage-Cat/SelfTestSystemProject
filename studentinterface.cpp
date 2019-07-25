@@ -176,10 +176,20 @@ void StudentInterface::showTestSelf()
 				}
 				QMessageBox::warning(NULL, QString::fromLocal8Bit("测试结束"), 
 					QString::fromLocal8Bit("测试结束，您的分数为：") + QString::number(userScore));
-				/*QString expr;
-				int res;
-				expr = generateIntExpr(4, res);
-				qDebug() << expr << endl << res;*/
+			}
+			else if (mode == QString::fromLocal8Bit("中级难度"))
+			{
+				for (int i = 0; i < testNum; i++)
+				{
+					QString expr; int res; int score = 100 / testNum;
+					expr = generateIntExpr(qrand() % 9 + 2, res);
+					QString examData[3];
+					examData[0] = QString::number(score); examData[1] = expr; examData[2] = QString::number(res);
+					DoTeacherExamDialog* d = new DoTeacherExamDialog(&userScore, examData);
+					d->exec();
+				}
+				QMessageBox::warning(NULL, QString::fromLocal8Bit("测试结束"),
+					QString::fromLocal8Bit("测试结束，您的分数为：") + QString::number(userScore));
 			}
 
         }
@@ -197,7 +207,7 @@ QString StudentInterface::generateIntExpr(int num, int& res)
 	QStack<int> numbers;
 	QStack<QChar> operators;
 	QString expr = "";
-	/*for (int i = 0; i < num; i++)
+	for (int i = 0; i < num; i++)
 		numbers.push(qrand() % 20 + 1);
 	for (int i = 1; i < num; i++)
 	{
@@ -215,8 +225,8 @@ QString StudentInterface::generateIntExpr(int num, int& res)
 		default:
 			break;
 		}
-	}*/
-	numbers.push(4); numbers.push(10); operators.push(QChar('*'));
+	}
+	//numbers.push(4); numbers.push(10); operators.push(QChar('*'));
 	QStack<int> numbersCpy = numbers;
 	QStack<QChar> operatorsCpy = operators;
 	expr.append(QString::number(numbers.top()) + " "); numbers.pop();
@@ -278,7 +288,7 @@ QString StudentInterface::generateIntExpr(int num, int& res)
 			intStack.push(tmpNum1 - tmpNum2);
 			break;
 		case '*':
-			intStack.push(tmpNum1 - tmpNum2);
+			intStack.push(tmpNum1 * tmpNum2);
 			break;
 		default:
 			break;
