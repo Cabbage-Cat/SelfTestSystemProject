@@ -1,6 +1,6 @@
 #include "basiclist.h"
 
-//QSqlDatabase BasicList::db = QSqlDatabase::addDatabase("QSQLITE");
+QSqlDatabase BasicList::db = QSqlDatabase::addDatabase("QSQLITE");
 
 BasicList::BasicList()
 {	
@@ -104,4 +104,9 @@ Node* BasicList::getNode(int id)
 		node = node->getNext();
 	}
 	return nullptr;
+}
+
+int BasicList::getLength()
+{
+	return this->length;
 }

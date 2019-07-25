@@ -16,8 +16,9 @@ public:
 	virtual void addNode(Node* node);
 	virtual void deleteNode(int id);
 	virtual Node* getNode(int id);
+	virtual int getLength();
 protected:
-	QSqlDatabase db;
+	static QSqlDatabase db;
 	Node* list = nullptr; // head node.
 	int length = 0;
 };

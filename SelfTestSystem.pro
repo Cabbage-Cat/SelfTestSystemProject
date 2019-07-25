@@ -39,7 +39,7 @@ SOURCES += \
         login.cpp \
         node.cpp \
         pastexaminfowindow.cpp \
-        selfmakeexamwindow.cpp \
+        selfmakeexamdialog.cpp \
         studentfinishedexam.cpp \
         studentinterface.cpp \
         studentscoreanalyzewindow.cpp \
@@ -58,7 +58,7 @@ HEADERS += \
         login.h \
         node.h \
         pastexaminfowindow.h \
-        selfmakeexamwindow.h \
+        selfmakeexamdialog.h \
         studentfinishedexam.h \
         studentinterface.h \
         studentscoreanalyzewindow.h \
@@ -73,7 +73,7 @@ FORMS += \
         doteacherexamdialog.ui \
         login.ui \
         pastexaminfowindow.ui \
-        selfmakeexamwindow.ui \
+        selfmakeexamdialog.ui \
         studentinterface.ui \
         studentscoreanalyzewindow.ui \
         teacherinterface.ui
