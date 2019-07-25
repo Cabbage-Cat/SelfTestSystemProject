@@ -18,14 +18,19 @@ DoTeacherExamDialog::DoTeacherExamDialog(int* userScore,QString examData[],QWidg
 
 void DoTeacherExamDialog::confirmPushButtonClicked()
 {
-    if (ui->answerLineEdit->text().trimmed() != this->ans)
+	if (ui->answerLineEdit->text().trimmed() == this->ans)
+	{
+		*(this->userScore) += this->thisProblemScore;
+		this->window()->close();
+	}
+    else if (fabs(ui->answerLineEdit->text().trimmed().toDouble() - this->ans.toDouble()) < 0.1)
     {
-        QMessageBox::warning(this,"答案错误","答案错误，正确答案为:" + this->ans);
+        *(this->userScore) += this->thisProblemScore;
         this->window()->close();
     }
     else
     {
-        *(this->userScore) += this->thisProblemScore;
+        QMessageBox::warning(this,"答案错误","答案错误，正确答案为:" + this->ans);
         this->window()->close();
     }
 }

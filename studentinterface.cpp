@@ -191,6 +191,20 @@ void StudentInterface::showTestSelf()
 				QMessageBox::warning(NULL, QString::fromLocal8Bit("测试结束"),
 					QString::fromLocal8Bit("测试结束，您的分数为：") + QString::number(userScore));
 			}
+			else
+			{
+				for (int i = 0; i < testNum; i++)
+				{
+					QString expr; double res; int score = 100 / testNum;
+					expr = generateFloatExpr(qrand() % 3 + 2, res);
+					QString examData[3];
+					examData[0] = QString::number(score); examData[1] = expr; examData[2] = QString::number(res);
+					DoTeacherExamDialog* d = new DoTeacherExamDialog(&userScore, examData);
+					d->exec();
+				}
+				QMessageBox::warning(NULL, QString::fromLocal8Bit("测试结束"),
+					QString::fromLocal8Bit("测试结束，您的分数为：") + QString::number(userScore));
+			}
 
         }
     }
@@ -301,13 +315,108 @@ QString StudentInterface::generateIntExpr(int num, int& res)
 
 QString StudentInterface::generateFloatExpr(int num, double& res)
 {
-	return QString();
+    QStack<double> numbers;
+    QStack<QChar> operators;
+    QString expr = "";
+    for (int i = 0; i < num; i++)
+        numbers.push(generateRandDouble(1.5,12) + 1);
+    for (int i = 1; i < num; i++)
+    {
+        int tmp = qrand() % 3 + 1;
+        switch (tmp)
+        {
+        case 1:
+            operators.push(QChar('+'));
+            break;
+        case 2:
+            operators.push(QChar('-'));
+            break;
+        case 3:
+            operators.push(QChar('*'));
+        default:
+            break;
+        }
+    }
+    //numbers.push(4); numbers.push(10); operators.push(QChar('*'));
+    QStack<double> numbersCpy = numbers;
+    QStack<QChar> operatorsCpy = operators;
+    expr.append(QString::number(numbers.top()) + " "); numbers.pop();
+    while (!operators.isEmpty())
+    {
+        QChar op = operators.pop();
+        double num = numbers.pop();
+        expr.append(op + QString(" ") + QString::number(num) + " ");
+    }
+
+    // 中缀转后缀
+    QStack<double> intStack;
+    QStack<QChar> operatorsStack;
+    while (!numbersCpy.isEmpty())
+    {
+        double popNum = numbersCpy.pop();
+        intStack.push(popNum);
+        if (numbersCpy.isEmpty()) break;
+        QChar popOp = operatorsCpy.pop();
+        if (operatorsStack.isEmpty() ||
+            this->operatorPriority[operatorsStack.top()] < this->operatorPriority[popOp])
+            operatorsStack.push(popOp);
+        else
+        {
+            while (!operatorsStack.isEmpty() &&
+                this->operatorPriority[operatorsStack.top()] >= this->operatorPriority[popOp])
+            {
+                QChar tmpOp = operatorsStack.pop();
+                double tmpNum2 = intStack.pop(); double tmpNum1 = intStack.pop();
+                switch (tmpOp.unicode())
+                {
+                case '+':
+                    intStack.push(tmpNum1 + tmpNum2);
+                    break;
+                case '-':
+                    intStack.push(tmpNum1 - tmpNum2);
+                    break;
+                case '*':
+                    intStack.push(tmpNum1 * tmpNum2);
+                    break;
+                default:
+                    break;
+                }
+            }
+            operatorsStack.push(popOp);
+        }
+    }
+
+    while (!operatorsStack.isEmpty())
+    {
+        QChar popOp = operatorsStack.pop();
+        double tmpNum2 = intStack.pop(); double tmpNum1 = intStack.pop();
+        switch (popOp.unicode())
+        {
+        case '+':
+            intStack.push(tmpNum1 + tmpNum2);
+            break;
+        case '-':
+            intStack.push(tmpNum1 - tmpNum2);
+            break;
+        case '*':
+            intStack.push(tmpNum1 * tmpNum2);
+            break;
+        default:
+            break;
+        }
+    }
+
+    res = intStack.pop();
+    return expr;
 }
+
 
 double StudentInterface::generateRandDouble(double minValue, double maxValue)
 {
 	double diff = fabs(maxValue - minValue);
 	double m1 = (double)(qrand() % 100) / 100;
 	double retval = minValue + m1 * diff;
+	QString str = QString::number(retval, 'f', 2);
+	retval = str.toDouble();
 	return retval;
 }
