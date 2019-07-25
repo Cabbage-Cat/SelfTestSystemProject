@@ -12,13 +12,13 @@ DoTeacherExamDialog::DoTeacherExamDialog(int* userScore,QString examData[],QWidg
             SLOT(confirmPushButtonClicked()));
     ui->numberLabel->setText("分数: " + examData[0]);
     ui->topicTextEdit->setText(examData[1]);
-    this->ans = examData[2];
+    this->ans = examData[2].trimmed();
     this->thisProblemScore = examData[0].toInt();
 }
 
 void DoTeacherExamDialog::confirmPushButtonClicked()
 {
-    if (ui->answerLineEdit->text() != this->ans)
+    if (ui->answerLineEdit->text().trimmed() != this->ans)
     {
         QMessageBox::warning(this,"答案错误","答案错误，正确答案为:" + this->ans);
         this->window()->close();

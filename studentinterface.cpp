@@ -4,6 +4,7 @@
 #include "changeuserinfowindow.h"
 #include "doteacherexamdialog.h"
 #include <QInputDialog>
+#include <QMessageBox>
 StudentInterface::StudentInterface(UserInfoNode* node,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::StudentInterface)
@@ -11,7 +12,10 @@ StudentInterface::StudentInterface(UserInfoNode* node,QWidget *parent) :
     ui->setupUi(this);
 	this->thisUser = node;
 	this->setWindowTitle(QString::fromLocal8Bit("学生:") + node->getName());
-
+	qsrand(QTime(0, 0, 0).secsTo(QTime::currentTime()));
+	this->operatorPriority[QChar('*')] = 2;
+	this->operatorPriority[QChar('+')] = 1;
+	this->operatorPriority[QChar('-')] = 1;
 //	this->thisUserChangeInfo = new UserInfo();
 //	this->thisUserChangeInfo->addNode(thisUser);
 
@@ -149,15 +153,34 @@ void StudentInterface::showTestSelf()
     if (testSelfIsOk)
     {
         QStringList selectMode;
-        selectMode.append(QString::fromLocal8Bit("整数运算"));
-        selectMode.append(QString::fromLocal8Bit("小数运算"));
-        selectMode.append(QString::fromLocal8Bit("分数运算"));
+        selectMode.append(QString::fromLocal8Bit("低级难度"));
+        selectMode.append(QString::fromLocal8Bit("中级难度"));
+        selectMode.append(QString::fromLocal8Bit("高级难度"));
         bool selectModeOk;
-        QString mode = QInputDialog::getItem(NULL,QString::fromLocal8Bit("请选择项目："),
-                              QString::fromLocal8Bit("练习项目"),
+        QString mode = QInputDialog::getItem(NULL,QString::fromLocal8Bit("请选择难度："),
+                              QString::fromLocal8Bit("练习难度"),
                               selectMode,1,false,&selectModeOk);
         if (selectModeOk)
         {
+			int userScore = 0;
+			if (mode == QString::fromLocal8Bit("低级难度"))
+			{
+				for (int i = 0; i < testNum; i++)
+				{
+					QString expr; int res; int score = 100 / testNum;
+					expr = generateIntExpr(qrand() % 5 + 2, res);
+					QString examData[3];
+					examData[0] = QString::number(score); examData[1] = expr; examData[2] = QString::number(res);
+					DoTeacherExamDialog* d = new DoTeacherExamDialog(&userScore, examData);
+					d->exec();
+				}
+				QMessageBox::warning(NULL, QString::fromLocal8Bit("测试结束"), 
+					QString::fromLocal8Bit("测试结束，您的分数为：") + QString::number(userScore));
+				/*QString expr;
+				int res;
+				expr = generateIntExpr(4, res);
+				qDebug() << expr << endl << res;*/
+			}
 
         }
     }
@@ -167,4 +190,114 @@ void StudentInterface::showPersonInfoChange()
 {
     ChangeUserInfoWindow* w = new ChangeUserInfoWindow(this->thisUser);
     w->show();
+}
+
+QString StudentInterface::generateIntExpr(int num, int& res)
+{
+	QStack<int> numbers;
+	QStack<QChar> operators;
+	QString expr = "";
+	/*for (int i = 0; i < num; i++)
+		numbers.push(qrand() % 20 + 1);
+	for (int i = 1; i < num; i++)
+	{
+		int tmp = qrand() % 3 + 1;
+		switch (tmp)
+		{
+		case 1:
+			operators.push(QChar('+'));
+			break;
+		case 2:
+			operators.push(QChar('-'));
+			break;
+		case 3:
+			operators.push(QChar('*'));
+		default:
+			break;
+		}
+	}*/
+	numbers.push(4); numbers.push(10); operators.push(QChar('*'));
+	QStack<int> numbersCpy = numbers;
+	QStack<QChar> operatorsCpy = operators;
+	expr.append(QString::number(numbers.top()) + " "); numbers.pop();
+	while (!operators.isEmpty())
+	{
+		QChar op = operators.pop();
+		int num = numbers.pop();
+		expr.append(op + QString(" ") + QString::number(num) + " ");
+	}
+	
+	// 中缀转后缀
+	QStack<int> intStack;
+	QStack<QChar> operatorsStack;
+	while (!numbersCpy.isEmpty())
+	{
+		int popNum = numbersCpy.pop();
+		intStack.push(popNum);
+		if (numbersCpy.isEmpty()) break;
+		QChar popOp = operatorsCpy.pop();
+		if (operatorsStack.isEmpty() ||
+			this->operatorPriority[operatorsStack.top()] < this->operatorPriority[popOp])
+			operatorsStack.push(popOp);
+		else
+		{
+			while (!operatorsStack.isEmpty() &&
+				this->operatorPriority[operatorsStack.top()] >= this->operatorPriority[popOp])
+			{
+				QChar tmpOp = operatorsStack.pop();
+				int tmpNum2 = intStack.pop(); int tmpNum1 = intStack.pop();
+				switch (tmpOp.unicode())
+				{
+				case '+':
+					intStack.push(tmpNum1 + tmpNum2);
+					break;
+				case '-':
+					intStack.push(tmpNum1 - tmpNum2);
+					break;
+				case '*':
+					intStack.push(tmpNum1 * tmpNum2);
+					break;
+				default:
+					break;
+				}
+			}
+			operatorsStack.push(popOp);
+		}
+	}
+
+	while (!operatorsStack.isEmpty())
+	{
+		QChar popOp = operatorsStack.pop();
+		int tmpNum2 = intStack.pop(); int tmpNum1 = intStack.pop();
+		switch (popOp.unicode())
+		{
+		case '+':
+			intStack.push(tmpNum1 + tmpNum2);
+			break;
+		case '-':
+			intStack.push(tmpNum1 - tmpNum2);
+			break;
+		case '*':
+			intStack.push(tmpNum1 - tmpNum2);
+			break;
+		default:
+			break;
+		}
+	}
+
+	res = intStack.pop();
+	return expr;
+}
+
+QString StudentInterface::generateFloatExpr(int num, double& res)
+{
+	return QString();
+}
+
+double StudentInterface::generateRandDouble(double minValue, double maxValue)
+{
+	double diff = fabs(maxValue - minValue);
+	double m1 = (double)(qrand() % 100) / 100;
+	double retval = minValue + m1 * diff;
+	return retval;
 }

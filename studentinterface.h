@@ -35,6 +35,12 @@ private:
 
     StudentFinishedExam* finishedExams = nullptr; // 储存当前用户已完成的测试
     //StudentFinishedExam* nowFinishedExams = nullptr; // 储存当前用户本次完成的测试,后续将完成的测试添加到数据库中
+	QString generateIntExpr(int num, int& res);
+	QString generateFloatExpr(int num, double& res);
+	double generateRandDouble(double minValue, double maxValue);
+
+	QMap<QChar, int> operatorPriority;
+
 };
 
 #endif // STUDENTINTERFACE_H
