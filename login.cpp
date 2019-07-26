@@ -68,6 +68,7 @@ void Login::loginSystemSlot(){
 				//w->setWindowTitle("Student:" + node->getName());
 				w->show();
 			}
+			this->window()->close();
 			return;
 		}
 		node = (UserInfoNode*)node->getNext();

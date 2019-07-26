@@ -112,14 +112,18 @@ void StudentInterface::showAnswerTestPaper()
     int score = 0;
     while (!fp->atEnd())
     {
+		QTextCodec* codec = QTextCodec::codecForName("GBK");
         QString examData[3];
         QByteArray buf;
         buf = fp->readLine();
-        examData[0] = QString(buf).trimmed();
+		examData[0] = codec->toUnicode(buf).trimmed();
+        //examData[0] = QString(buf).trimmed();
         buf = fp->readLine(1000);
-        examData[1] = QString(buf).trimmed();
+        //examData[1] = QString(buf).trimmed();
+		examData[1] = codec->toUnicode(buf).trimmed();
         buf = fp->readLine(1000);
-        examData[2] = QString(buf).trimmed();
+        //examData[2] = QString(buf).trimmed();
+		examData[2] = codec->toUnicode(buf).trimmed();
         //DoTeacherExamWindow *w = new DoTeacherExamWindow(&score,examData);
         DoTeacherExamDialog *d = new DoTeacherExamDialog(&score,examData);
         d->exec();
