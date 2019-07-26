@@ -29,7 +29,7 @@ void SelfMakeExamDialog::setScoreLineEditStatus()
 {
 	if (this->examData[1] == this->examData[2])
 	{
-		ui->scoreLineEdit->setValidator(new QIntValidator(this->examData[0], this->examData[0], this));
+		//ui->scoreLineEdit->setValidator(new QIntValidator(this->examData[0], this->examData[0], this));
 		ui->scoreLineEdit->setText(QString::number(this->examData[0]));
 		ui->scoreLineEdit->setDisabled(true);
 	}
