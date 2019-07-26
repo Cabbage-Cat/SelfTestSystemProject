@@ -1,5 +1,6 @@
 #ifndef TEACHERINTERFACE_H
 #define TEACHERINTERFACE_H
+// 教师接口
 #include <QWidget>
 #include "userinfo.h"
 #include "studentfinishedexam.h"

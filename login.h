@@ -1,6 +1,6 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-
+//µÇÂ¼½çÃæ
 #include <QWidget>
 #include <QtSql>
 #include <QDebug>

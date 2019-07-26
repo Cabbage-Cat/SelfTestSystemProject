@@ -1,5 +1,6 @@
 #ifndef PASTEXAMINFOWINDOW_H
 #define PASTEXAMINFOWINDOW_H
+// 显示过去考试信息的窗口
 #include "studentfinishedexam.h"
 #include <QWidget>
 

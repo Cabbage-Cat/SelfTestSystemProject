@@ -1,5 +1,6 @@
 #ifndef STUDENTFINISHEDEXAM_H
 #define STUDENTFINISHEDEXAM_H
+// 存取(STUDENTID-EXAMID-SCORE)节点的链表。
 #include "basiclist.h"
 
 class StudentFinishedExam : public BasicList

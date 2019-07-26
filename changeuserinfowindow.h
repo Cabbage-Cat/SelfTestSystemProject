@@ -1,6 +1,6 @@
 #ifndef CHANGEUSERINFOWINDOW_H
 #define CHANGEUSERINFOWINDOW_H
-
+//功能与ChangUserInfoDialog相同
 #include <QWidget>
 #include "userinfo.h"
 namespace Ui {

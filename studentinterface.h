@@ -1,6 +1,6 @@
 #ifndef STUDENTINTERFACE_H
 #define STUDENTINTERFACE_H
-
+// 学生接口
 #include <QWidget>
 #include <QTreeWidget>
 #include "examinfo.h"

@@ -1,6 +1,6 @@
 #ifndef DOTEACHEREXAMDIALOG_H
 #define DOTEACHEREXAMDIALOG_H
-
+// 做老师出的题/自测窗口
 #include <QDialog>
 
 namespace Ui {

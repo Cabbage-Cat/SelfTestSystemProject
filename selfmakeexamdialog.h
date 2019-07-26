@@ -1,6 +1,6 @@
 #ifndef SELFMAKEEXAMDIALOG_H
 #define SELFMAKEEXAMDIALOG_H
-
+// 教师出题的窗口
 #include <QDialog>
 
 namespace Ui {

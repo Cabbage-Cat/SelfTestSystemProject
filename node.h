@@ -1,7 +1,7 @@
 #ifndef NODE_H
 #define NODE_H
 #include <QString>
-
+// 不同种类的链表节点。
 class Node
 {
 public:

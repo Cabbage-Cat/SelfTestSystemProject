@@ -1,6 +1,6 @@
 #ifndef STUDENTSCOREANALYZEWINDOW_H
 #define STUDENTSCOREANALYZEWINDOW_H
-
+// 教师界面中分析本班学生成绩窗口。
 #include <QWidget>
 #include "userinfo.h"
 #include "studentfinishedexam.h"
