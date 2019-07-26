@@ -53,12 +53,14 @@ public:
     int getExamId();
     void setExamId(int examId);
     int getScore();
+    QString getComment();
     void setScore(int score);
-
+    void setComment(QString comment);
     virtual bool compare(int id);
 protected:
     int examId;
     int score;
+    QString comment;
 	// Base Id is userID , examId is exam's Id , override method compare to find examid == 'eId' node.
 };
 

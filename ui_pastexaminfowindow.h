@@ -26,10 +26,10 @@ public:
     {
         if (PastExamInfoWindow->objectName().isEmpty())
             PastExamInfoWindow->setObjectName(QString::fromUtf8("PastExamInfoWindow"));
-        PastExamInfoWindow->resize(297, 501);
+        PastExamInfoWindow->resize(495, 501);
         treeWidget = new QTreeWidget(PastExamInfoWindow);
         treeWidget->setObjectName(QString::fromUtf8("treeWidget"));
-        treeWidget->setGeometry(QRect(10, 10, 271, 471));
+        treeWidget->setGeometry(QRect(10, 10, 461, 471));
 
         retranslateUi(PastExamInfoWindow);
 
@@ -40,6 +40,7 @@ public:
     {
         PastExamInfoWindow->setWindowTitle(QCoreApplication::translate("PastExamInfoWindow", "Form", nullptr));
         QTreeWidgetItem *___qtreewidgetitem = treeWidget->headerItem();
+        ___qtreewidgetitem->setText(2, QCoreApplication::translate("PastExamInfoWindow", "\346\225\231\345\270\210\345\257\204\350\257\255", nullptr));
         ___qtreewidgetitem->setText(1, QCoreApplication::translate("PastExamInfoWindow", "\346\265\213\350\257\225\346\210\220\347\273\251", nullptr));
         ___qtreewidgetitem->setText(0, QCoreApplication::translate("PastExamInfoWindow", "\346\265\213\350\257\225\347\274\226\345\217\267", nullptr));
     } // retranslateUi

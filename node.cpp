@@ -113,3 +113,13 @@ bool StudentFinishedExamNode::compare(int id)
 		return true;
 	return false;
 }
+
+void StudentFinishedExamNode::setComment(QString comment)
+{
+    this->comment = comment;
+}
+
+QString StudentFinishedExamNode::getComment()
+{
+    return this->comment;
+}

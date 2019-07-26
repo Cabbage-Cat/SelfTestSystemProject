@@ -12,6 +12,7 @@ public:
 	virtual void init();
 	virtual void saveAdd();
 	virtual void saveDelete();
+    void saveUpdateComment();
 public:
 	int stuId;
 };

@@ -44,6 +44,7 @@ void StudentFinishedExam::init()
 		node->setId(query.value(0).toInt());
 		node->setExamId(query.value(1).toInt());
 		node->setScore(query.value(2).toInt());
+		node->setComment(query.value(3).toString());
 		this->addNode(node);
 	}
 
@@ -77,6 +78,31 @@ void StudentFinishedExam::saveAdd()
 	}
 
 	db.close();
+}
+
+void StudentFinishedExam::saveUpdateComment()
+{
+    qDebug() << "saveUpdate studentFinishedExam: " << stuId;
+    if (!db.open())
+    {
+        qDebug() << "Database open error.";
+        return;
+    }
+    qDebug() << "Database open success.";
+
+    QString statement;
+    QSqlQuery query;
+
+    StudentFinishedExamNode* node = (StudentFinishedExamNode*)this->list->getNext();
+
+    while (node != nullptr)
+    {
+        statement = QString("UPDATE 'STUDENTEXAMS' SET 'COMMENT' = "
+                            "'%1' WHERE STUID = %2 AND EXAMID = %3;").arg(node->getComment()).arg(node->getId()).arg(node->getExamId());
+        qDebug() << statement << endl;
+        query.exec(statement);
+        node = (StudentFinishedExamNode*)node->getNext();
+    }
 }
 
 void StudentFinishedExam::saveDelete()

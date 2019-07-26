@@ -12,6 +12,7 @@ PastExamInfoWindow::PastExamInfoWindow(StudentFinishedExam* finishedExams,QWidge
 		QTreeWidgetItem* item = new QTreeWidgetItem();
 		item->setText(0, QString::number(node->getExamId()));
 		item->setText(1, QString::number(node->getScore()));
+        item->setText(2,node->getComment());
 		node = (StudentFinishedExamNode*)node->getNext();
 		ui->treeWidget->addTopLevelItem(item);
 	}

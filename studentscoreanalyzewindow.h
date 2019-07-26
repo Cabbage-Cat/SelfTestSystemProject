@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "userinfo.h"
 #include "studentfinishedexam.h"
+#include <QTreeWidget>
 namespace Ui {
 class StudentScoreAnalyzeWindow;
 }
@@ -15,7 +16,8 @@ class StudentScoreAnalyzeWindow : public QWidget
 public:
     explicit StudentScoreAnalyzeWindow(int classNumber,QWidget *parent = nullptr);
     ~StudentScoreAnalyzeWindow();
-
+public slots:
+    void setExamComment(QTreeWidgetItem* item,int column);
 private:
     Ui::StudentScoreAnalyzeWindow *ui;
 	UserInfo* allUser = nullptr;

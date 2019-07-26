@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>297</width>
+    <width>495</width>
     <height>501</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>271</width>
+     <width>461</width>
      <height>471</height>
     </rect>
    </property>
@@ -30,6 +30,11 @@
    <column>
     <property name="text">
      <string>测试成绩</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>教师寄语</string>
     </property>
    </column>
   </widget>
